@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -9,10 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+	  <PackageReference Include="MassTransit" Version="8.1.4-develop.1638" />
+	  <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.4-develop.1638" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NotificationAPI.Domain\NotificationAPI.Domain.csproj" />
-    <ProjectReference Include="..\NotificationAPI.Infrastructure\NotificationAPI.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

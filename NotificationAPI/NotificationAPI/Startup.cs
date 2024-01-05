@@ -1,7 +1,7 @@
 ﻿using NotificationAPI.Domain.Helpers;
 using NotificationAPI.Infrastructure;
 
-namespace NotificationAPI;
+namespace NotificationAPI.WebApi;
 
 public class Startup
 {
@@ -14,20 +14,30 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        var appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>() ?? new AppSettings();
-
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+
+        var appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>() ?? new AppSettings();
         services.AddSingleton(appSettings);
         services.RegisterApplicationExternalDependencies(appSettings);
     }
 
-    public void Configure(IApplicationBuilder app)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+        if (env.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseRouting();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+
         app.UseHttpsRedirection();
-        app.UseAuthorization();
     }
 }
