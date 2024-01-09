@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-NotificationAPI.Worker-0b4dc92c-2257-4831-895e-9532d2c2e3da</UserSecretsId>
   </PropertyGroup>
@@ -15,5 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotificationAPI.Domain\NotificationAPI.Domain.csproj" />
+    <ProjectReference Include="..\NotificationAPI.Infrastructure\NotificationAPI.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

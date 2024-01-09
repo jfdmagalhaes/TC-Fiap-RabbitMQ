@@ -1,5 +1,7 @@
-﻿using NotificationAPI.Domain.Helpers;
+﻿using Microsoft.EntityFrameworkCore;
+using NotificationAPI.Domain.Helpers;
 using NotificationAPI.Infrastructure;
+using NotificationAPI.Infrastructure.EntityFramework.Context;
 
 namespace NotificationAPI.WebApi;
 
@@ -20,7 +22,7 @@ public class Startup
 
         var appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>() ?? new AppSettings();
         services.AddSingleton(appSettings);
-        services.RegisterApplicationExternalDependencies(appSettings);
+        services.RegisterApplicationExternalDependencies(appSettings, Configuration);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
