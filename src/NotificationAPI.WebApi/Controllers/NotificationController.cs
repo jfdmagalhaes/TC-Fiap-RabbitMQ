@@ -19,7 +19,15 @@ public class NotificationController : ControllerBase
 
     public async Task<IActionResult> SendMessage(Notification notification)
     {
-        await _producer.SendMessageAsync(notification);
-        return Ok();
+        try
+        {
+            await _producer.SendMessageAsync(notification);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
     }
 }

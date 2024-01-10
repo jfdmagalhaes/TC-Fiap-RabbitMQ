@@ -9,7 +9,8 @@ public class NotificationReader : IConsumer<Notification>
 
     public NotificationReader(INotificationRepository notificationRepository)
     {
-        _notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
+        _notificationRepository = notificationRepository ?? 
+            throw new ArgumentNullException(nameof(notificationRepository));
     }
 
     public async Task Consume(ConsumeContext<Notification> context)
@@ -24,7 +25,7 @@ public class NotificationReader : IConsumer<Notification>
 
             await _notificationRepository.AddAndCommitNotification(notification);
 
-            Console.WriteLine(context.Message.Message);
+            Console.WriteLine($"{context.Message.Message} message was saved successfully");
 
         }
         catch (Exception ex) 
