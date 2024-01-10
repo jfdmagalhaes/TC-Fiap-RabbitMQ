@@ -6,8 +6,11 @@ Foi implementado a WebAPI como produtor de mensagens e uma camada de Worker como
 O Github Actions está sendo utilizado para controle da pipeline. Onde, toda vez que ocorre uma alteração no código, são executados os passos de validação do código, build, etc, além da execução dos testes unitários e integrados.
 
 ## Usage - Testes na aplicação
-Para testar localmente, executar o docker-compose disponível no repositório. Ele irá subir a instância local do RabbitMQ e também o sql local para armazenamento das mensagens na tabela dbo.Notification.
-Subir a aplicação com múltiplos startup projects, definindo o worker e a WebApi para inicialização. O endpoint SendMessage irá enviar a mensagem para a fila do RabbitMQ e o Worker irá consumir essa mensagem, inserindo no banco de dados local Sql.
+Para testar localmente:
+
+Execute o docker-compose disponível no repositório. Isso iniciará uma instância local do RabbitMQ e do SQL para armazenar as mensagens na tabela dbo.Notification.
+```docker-compose up```
+Inicie a aplicação com múltiplos projetos de inicialização, configurando o Worker e a WebAPI como startup. O endpoint SendMessage enviará mensagens para a fila do RabbitMQ, enquanto o Worker consumirá essas mensagens, inserindo-as no banco de dados SQL local.
 
 ### 1. Criar uma nova mensagem
 
@@ -16,10 +19,12 @@ Subir a aplicação com múltiplos startup projects, definindo o worker e a WebA
 - **Descrição:** Cria uma nova mensagem.
 
 Exemplo mensagem:
+```
 {
-  "message": "string",
+  "message": "Primeira notificação teste",
   "creationDate": "2024-01-10"
 }
+```
 
 ## Implementação dos testes automatizados
 A aplicação possui testes automatizados implementados com as seguintes bibliotecas:
