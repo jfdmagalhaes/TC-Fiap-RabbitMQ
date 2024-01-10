@@ -9,7 +9,8 @@ O Github Actions está sendo utilizado para controle da pipeline. Onde, toda vez
 Para testar localmente:
 
 Execute o docker-compose disponível no repositório. Isso iniciará uma instância local do RabbitMQ e do SQL para armazenar as mensagens na tabela dbo.Notification.
-```docker-compose up```
+Executar: ```docker-compose up```
+
 Inicie a aplicação com múltiplos projetos de inicialização, configurando o Worker e a WebAPI como startup. O endpoint SendMessage enviará mensagens para a fila do RabbitMQ, enquanto o Worker consumirá essas mensagens, inserindo-as no banco de dados SQL local.
 
 ### 1. Criar uma nova mensagem
