@@ -22,5 +22,9 @@ Exemplo mensagem:
 }
 
 ## Implementação dos testes automatizados
-Foram implementados os testes automatizados na aplicação.
-Utilizada as bibliotecas NUnit, MoQ para criar os mocks necessários durante os testes e também o FluentAssertions para as asserções dos testes realizados de forma legível.
+A aplicação possui testes automatizados implementados com as seguintes bibliotecas:
+
+- NUnit: Framework de teste unitário.
+- MoQ: Utilizado para criar mocks durante os testes.
+- FluentAssertions: Facilita a criação de asserções legíveis nos testes.
+- AutoFixture: Para facilitar a geração de dados dos mocks.
